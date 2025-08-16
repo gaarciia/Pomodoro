@@ -1,0 +1,221 @@
+/* 🌌 Fundo espacial */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000, #0a0f1c, #1c1f3f, #2c2f5c, #3b3f7a);
+  background-size: 400% 400%;
+  animation: galaxyShift 30s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+@keyframes galaxyShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 0; left: 0;
+  box-shadow:
+    50px 80px #fff,
+    120px 200px #ddd,
+    300px 150px #aaa,
+    400px 300px #fff,
+    600px 100px #ccc,
+    700px 250px #eee,
+    900px 400px #fff,
+    1000px 200px #ddd;
+  animation: twinkle 4s infinite ease-in-out;
+  z-index: 0;
+}
+
+@keyframes twinkle {
+  0%,100% { opacity: 0.8; }
+  50%     { opacity: 0.2; }
+}
+
+/* 🛸 Tela de seleção */
+.setup-screen {
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+}
+
+.apple-icon {
+  font-size: 6rem;
+  margin-bottom: 8px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.setup-title {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.time-options {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.time-btn {
+  background: #34495e;
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.time-btn:hover {
+  background: #2c3e50;
+}
+
+/* ⏱️ Pomodoro Timer */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* 🎉 Botão Voltar centralizado no topo */
+#back {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e74c3c;
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#back:hover {
+  opacity: 0.7;
+}
+
+/* Título e timer */
+.title {
+  font-size: 2.2rem;
+  color: white;
+  margin: 10px 0;
+}
+
+.timer {
+  font-size: 4.5rem;
+  color: white;
+  text-shadow: 0 0 12px rgba(255,255,255,0.8);
+}
+
+/* 🎛️ Controles principais */
+.main-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.main-buttons button {
+  background: #16a085;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  min-width: 100px;
+  transition: opacity 0.3s;
+}
+
+.main-buttons button#stop  { background: #e74c3c; }
+.main-buttons button#reset { background: #7f8c8d; }
+
+.main-buttons button:hover {
+  opacity: 0.7;
+}
+
+/* 🎛️ Botões de pausa */
+.break-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.break-buttons button {
+  background: #2980b9;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  min-width: 100px;
+  transition: opacity 0.3s;
+}
+
+.break-buttons button#long-break { background: #8e44ad; }
+
+.break-buttons button:hover {
+  opacity: 0.7;
+}
+
+/* 📱 Responsividade */
+@media (max-width: 600px) {
+  .timer  { font-size: 3.5rem; }
+  .title  { font-size: 1.8rem; }
+
+  .time-btn,
+  .main-buttons button,
+  .break-buttons button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    min-width: 80px;
+  }
+
+  /* mantém Voltar centralizado no topo em mobile */
+  #back {
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
